@@ -121,5 +121,85 @@ def profile():
     # User is not logged in redirect to login page
     return redirect(url_for('login'))
 
+@app.route('/login/savepatient', methods = ['POST', 'GET'])
+def patient():
+    msg=''
+    if request.method == 'POST':
+        cfiche = request.form['codeFiche']
+        nom = request.form['Nom']
+        prenom = request.form['Prenom']
+        telephone = request.form['Tel']
+        email = request.form['Email']
+        dateNaiss = request.form['DteNaiss']
+        sexe = request.form.getlist(['Sexe'])
+        profession = request.form['Profession']
+
+        GFamilial = request.form.getlist('GlauFamilial[]')
+        siGFamilial = request.form.getlist('SIGlauFamilial[]')
+        ceciFamilial = request.form.getlist('CecitFamilial[]')
+        antecedent = request.form.getlist('Antecedent[]')
+
+        medSystem = request.form['MedSytem']
+        actdOpht = request.form['ActdOpht']
+
+        acuiteV = request.form['AcuiteVisuel']
+        motilite = request.form.getlist('Motilite[]')
+        biomiscropie = request.form['Biomiscropie']
+        tonovaleur = request.form['TonoValeur']
+        tonoHmesure = request.form['TonoHMesure']
+        tonoTytono = request.form['TonoTypeTono']
+        tonopressionibl = request.form['TonoPressionCible']
+
+        gionioscopieD = request.form.getlist('GionoD[]')
+        gionioscopieG = request.form.getlist('GionoG[]')
+
+        vertCupDiscD = request.form['VertCupDiscD']
+        vertCupDiscG = request.form['VertCupDiscG']
+        anrD = request.form['ANRD']
+        anrG = request.form['ANRG']
+        polePostD = request.form['PolePostD']
+        polePostG = request.form['PolePostG']
+
+        atroperiD = request.form('AtroPeriD[]')
+        atroperiG = request.form('AtroPeriG[]')
+
+        hemoragieD = request.form('HemoragieD[]')
+        hemoagieG = request.form('HemoragieG[]')
+
+        perimdD = request.form['PeriMdD']
+        perimdG = request.form['PeriMdG']
+
+        peripsdD = request.form['PeriPsdD']
+        peripsdG = request.form['PeriPsdG']
+
+        periIndexD = request.form['PeriIndexD']
+        periIndexG = request.form['PeriIndexG']
+
+        octRnflD = request.form['OCTRNFLD']
+        octRnflG = request.form['OCTRNFLG']
+
+        octVertcdD = request.form['OctVcdD']
+        octVertcdG = request.form['OctVcdG']
+
+        octCupvolumeD = request.form['OctCupD']
+        octCupvolumeG = request.form['OctCupG']
+
+        macularD = request.form['MacularD']
+        macularG = request.form['MacularG']
+
+        macularthD = request.form['MacularthD']
+        macularthG = request.form['MacularthG']
+
+        classifiMillsD = request.form['ClassifMillsD']
+        classifiMillsG = request.form['ClassifMillsG']
+        diagnosticD = request.form['DiagnosticD']
+        diagnosticG = request.form['DiagnosticG']
+
+        diagnosticGlaucomaD = request.form('niveau[]')
+
+
+
+    return render_template('profile.html', msg=msg)
+
 if __name__ == '__main__':
     app.run()
